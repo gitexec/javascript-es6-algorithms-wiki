@@ -1,4 +1,4 @@
-const Queue = require('./../algorithms-kit/queue/listbased');
+const Queue = require('./../datastructures/queue/listbased');
 const assert = require('assert');
 
 describe('Queue List Based', () => {

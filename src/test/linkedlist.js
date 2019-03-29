@@ -1,5 +1,5 @@
 const assert = require('assert');
-const List = require('./../algorithms-kit/linkedlist/linkedlist');
+const List = require('./../datastructures/linkedlist/linkedlist');
 
 describe('LinkedList Test', () => {
  let linkedList;

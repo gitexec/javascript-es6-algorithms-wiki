@@ -1,4 +1,4 @@
-const Stack = require('./../algorithms-kit/stack/arraybased');
+const Stack = require('./../datastructures/stack/arraybased');
 const assert = require('assert');
 
 describe('testing array based stack', () => {

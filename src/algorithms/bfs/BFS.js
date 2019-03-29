@@ -11,8 +11,9 @@ function BSF(graph, nodeName) {
   
    while(!q.isEmpty) {
     let currNode = q.remove();
-    if(!currNode.includes(currNode.getValue())) {
+    if(!visited.includes(currNode.getValue())) {
      process(currNode);
+     visited.push(currNode.getValue());
      for(let childName in graph.getNeighbors(currNode.getValue())) {
       q.add(graph.getVertex(childName)); 
      }  
@@ -22,5 +23,8 @@ function BSF(graph, nodeName) {
    }
 }
 
+function process(node) {
+ console.log(node);
+}
 module.exports = BFS;
 

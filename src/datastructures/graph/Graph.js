@@ -50,4 +50,8 @@ class Graph {
   if(this.vertices[v]) {
    return this.vertices[v].edges;
   }
+
+ getVertices(){
+  return Obect.keys(this.vertices);
+ }
 } 

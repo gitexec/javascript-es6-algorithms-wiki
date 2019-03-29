@@ -1,4 +1,4 @@
-const List = require('./../algorithms-kit/stack/listbased.js');
+const List = require('./../datastructures/stack/listbased.js');
 const assert = require('assert');
 
 

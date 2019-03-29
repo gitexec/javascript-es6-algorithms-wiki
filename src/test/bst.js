@@ -1,7 +1,7 @@
-const BST = require('./../algorithms-kit/trees/bst');
+const BST = require('./../datastructures/trees/bst');
 const assert = require('assert');
 
-describe('BST trees tests', () => {
+describe.only('BST trees tests', () => {
   let bst;
    /**
         15
@@ -21,6 +21,8 @@ describe('BST trees tests', () => {
     bst.insert(17);
     bst.insert(28);
     bst.insert(8);
+   
+    console.log('tree', bst);
   });
   describe('#insert() BST', () => {
    it('should insert nodes', () => {
