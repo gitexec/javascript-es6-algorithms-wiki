@@ -1,9 +1,9 @@
 const Comparator = require('./../../utils/comparator');
 
 class Heap {
- constructor(compareFunction) {
+ constructor(compareFunction) { 
   if (new.target === Heap) {
-   throw New TypeError('Cannot construct Heap instant directly');
+   //throw New TypeError('Cannot construct Heap instant directly');
   }
   this.container = [];
   this.compare = new Comparator(compareFunction);
@@ -11,22 +11,26 @@ class Heap {
  
  add(item) {
   this.container.push(item);
-  this.bubbleUp();
+  this.bubbleUp(this.container.length - 1);
   return this;
  }
 
- extraTop() {
+ remove() {
   let item = this.container[0]
-  this.container[0] = this.container[this.container.length - 1];
+  this.container[0] = this.container.pop();
   this.bubbleDown();
   return item;
  }
  
+ peek() {
+  return this.container[0];
+ }
+ 
  bubbleUp(index){
-  index = index || this.container.length;
-  if(index >= 0) {
+  if(index > 0) {
    let parentIndex = this.getParentIndex(index);
-   if(this.pairInRightOrder(index, this.getParentIndex(index))) {
+   let t = this.pairInRightOrder(this.container[parentIndex], this.container[index]);
+   if(parentIndex >= 0 && !this.pairInRightOrder(this.container[parentIndex], this.container[index])) {
     this.swap(index, parentIndex);
     return this.bubbleUp(parentIndex);
    } else {
@@ -39,25 +43,29 @@ class Heap {
    if(index < this.container.length) {
     let leftIndex = this.getLeftChildIndex(index);
     let rightIndex = this.getRightChildIndex(index);
-    if(this.pairInRightOrder(index, leftIndex) || this.pairInRightOrder(index, rightIndex) {
-      let smallIndex = this.pairInRightOrder(leftIndex, rightIndex);
+    let parent = this.container[index];
+    let lChild = this.container[leftIndex];
+    let rChild = this.container[rightIndex];
+    if(rChild !== undefined && !(this.pairInRightOrder(parent, lChild) || this.pairInRightOrder(parent, rChild))) {
+      let smallIndex = this.pairInRightOrder(lChild, rChild) ? leftIndex : rightIndex;
       this.swap(index, smallIndex);
       return this.bubbleDown(smallIndex);
-    } else {
-      return this;
-    }
+    } else if (lChild !== undefined && !this.pairInRightOrder(parent, lChild)){
+       this.swap(index, leftIndex);
+       return this.bubbleDown(leftIndex);
+    } else return this;
    }
  }
  
  getParentIndex(index) {
-  return (index - 1) / 2;
+  return Math.floor(Math.abs(index - 1) / 2);
  }
  
- getLeftChild(index) {
+ getLeftChildIndex(index) {
   return 2*index + 1;
  }
 
- getRightChild(index){
+ getRightChildIndex(index){
   return 2*index + 2;
  }
 

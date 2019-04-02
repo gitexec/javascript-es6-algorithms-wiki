@@ -1,27 +1,22 @@
-const Node = require('./node');
+const LinkedList = require('./../list/linkedlist');
 
 class ListBasedQueue {
   constructor() {
-   this.head = null;
+   this.list = new LinkedList();
   }
 
   insert(data) {
-   let tmp = new Node(data, this.head);
-   this.head = tmp;
+   this.list.addLast(data);
    return this;
   }
   
+  peek() {
+   return this.list.getFirst();
+  }
+  
   remove() {
-    if(!this.head) return null;
-    
-    let tmp = this.head;
-    while(tmp.next) {
-      tmp = tmp.next;
-    }
-    
-    let rtVal = tmp;
-    tmp = null;
-    return rtVal;
+   let first = this.list.removeFirst();
+   return (first === null) ? null : first.data;
  }
 }
 module.exports = ListBasedQueue;

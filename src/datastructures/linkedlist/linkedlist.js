@@ -32,6 +32,13 @@ class LinkedList {
   tmpNode.next = new Node(data, null);
   return this;
  }
+ 
+ removeFirst() {
+  if (!this.head) return null;
+  let rtValue = this.head;
+  this.head = this.head.next;
+  return rtValue;
+ }
 
  remove(data) {
   if(!data) return -1;

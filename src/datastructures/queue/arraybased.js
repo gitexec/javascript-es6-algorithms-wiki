@@ -11,8 +11,8 @@ class ArrayBasedQueue {
  remove() {
    let returnVal = this.array[0];
    
-   for(let i = 0; i < this.array.length; i++) {
-    this.array[i] = this.array[i+1];
+   for(let i = 1; i < this.array.length; i++) {
+    this.array[i - 1] = this.array[i];
    }
    this.array.length--;
    return returnVal;

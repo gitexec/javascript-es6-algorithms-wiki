@@ -23,7 +23,7 @@ class Comparator {
  }
 
  greaterThanEqual(a, b) {
-  return this.greaterThan(a, b)  || this.equal(a, b);
+  return this.greaterThan(a, b) || this.equal(a, b);
  }
  
  lessThanEqual(a, b) {
