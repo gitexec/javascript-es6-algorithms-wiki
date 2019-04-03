@@ -5,7 +5,7 @@ function quickSort(array) {
 
 function sort(array, left, right){
  if(left < right) { // <= ?
-  return array;
+  return;
  }
  let pivot = swapSort(array, left, right); // Pivot is considered to be sorted
  sort(array, left, pivot - 1);
@@ -20,7 +20,7 @@ function swapSort(array, left, right) {
 
  while(left <= right) {
    while(array[left++] < pivot && left < array.left)
-   while(array[right--] > pivot && right > 0)
+   while(array[right--] > pivot && right >= 0)
    swap(array, left, right);
  }
 }

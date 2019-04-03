@@ -1,48 +1,58 @@
 const Node = require('./node');
 
-
 class LinkedList { 
   constructor() {
    this.head = null;
+   this.tail = null;
   }
  
  add(data) { 
-  return this.addFirst(data);
+  return this.addLast(data);
  }
  
  addFirst(data) { 
-  if(!data) return -1;
+  if(!data) return null;
+
   let newNode = new Node(data, this.head);
   this.head = newNode;
+  
+  if (!this.tail) {
+   tail = newNode;
+  }
+
   return this;
  }
 
  addLast(data) {
-  if(!data) return -1;
+  if(!data) return null;
+
+  let newNode = new Node(data, this.tail);
+  tail = newNode;
+  
   if(!this.head) {
-   this.head = new Node(data, null);
-   return this;
+   this.head = newNode;
   }
-  
-  let tmpNode = this.head;
-  while(tmpNode.next) {
-   tmpNode = tmpNode.next;
-  }
-  
-  tmpNode.next = new Node(data, null);
   return this;
  }
  
+ // TODO : Keep track of tail?
  removeFirst() {
   if (!this.head) return null;
   let rtValue = this.head;
   this.head = this.head.next;
   return rtValue;
  }
+ 
+ removeLast() { 
+  if(!this.tail) return null;
+  let rtValue = this.tail;
+  this.tail = this.tail.next;
+  return rtValue;
+ }
 
  remove(data) {
-  if(!data) return -1;
-  if(!this.head) return -1;
+  if(!data) return null;
+  if(!this.head) return null;
   if(this.head && this.head.data === data) {
     this.head = this.head.next;
     return this;
@@ -58,14 +68,12 @@ class LinkedList {
 
    prev = prev.next;
   }
-  return -1;
+  return null;
  }
  
  getLast() {
-  if(!this.head) return -1;
-  let tmp = this.head;
-  while(tmp.next) tmp = tmp.next;
-  return tmp;
+  if(!this.tail) return null;
+  return tail;
  }
 
  print() {

@@ -29,7 +29,7 @@ class Heap {
  bubbleUp(index){
   if(index > 0) {
    let parentIndex = this.getParentIndex(index);
-   let t = this.pairInRightOrder(this.container[parentIndex], this.container[index]);
+
    if(parentIndex >= 0 && !this.pairInRightOrder(this.container[parentIndex], this.container[index])) {
     this.swap(index, parentIndex);
     return this.bubbleUp(parentIndex);
@@ -47,9 +47,9 @@ class Heap {
     let lChild = this.container[leftIndex];
     let rChild = this.container[rightIndex];
     if(rChild !== undefined && !(this.pairInRightOrder(parent, lChild) || this.pairInRightOrder(parent, rChild))) {
-      let smallIndex = this.pairInRightOrder(lChild, rChild) ? leftIndex : rightIndex;
-      this.swap(index, smallIndex);
-      return this.bubbleDown(smallIndex);
+      let swapIndex = this.pairInRightOrder(lChild, rChild) ? leftIndex : rightIndex;
+      this.swap(index, swapIndex);
+      return this.bubbleDown(swapIndex);
     } else if (lChild !== undefined && !this.pairInRightOrder(parent, lChild)){
        this.swap(index, leftIndex);
        return this.bubbleDown(leftIndex);

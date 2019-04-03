@@ -1,15 +1,11 @@
-function MergeSort(array) {
-  sort(array,  
-}
-
-function sort(array, ){
+function Sort(array){
   if(array.length === 1) {
    return array; 
   }
 
   let middle = Math.floor(array.length / 2);
   let left = sort(array.slice(0, middle);
-  let right = sort(array, middle, array.length);
+  let right = sort(array.slice(middle, array.length);
   
   return merge(left, right); 
 }
@@ -33,4 +29,4 @@ function merge(array1, array2) {
  }
  return merged;
 }
-module.exports = MergeSort;
+module.exports = Sort;

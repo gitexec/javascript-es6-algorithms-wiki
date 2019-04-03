@@ -6,12 +6,13 @@ class Tries {
  insert(w) {
   const tmp = this.root;
   
-  for(let i = 0; i < w.length; i++){ 
+  let i;
+  for(i = 0; i < w.length; i++){ 
    if(!tmp.children[w[i]]) {
      tmp[w[i]] = new TrieNode(w[i], tmp);
    }
    tmp = tmp.children[w[i]];
-   if (i === w.length -1) tmp.end = true;
+   if (i === w.length) tmp.end = true;
   }
   
  } 
@@ -21,7 +22,7 @@ class Tries {
   
   for(let i = 0; i < word.length; i++){
    if(!tmp.children[word[i]]) return false;
-   tmp = tmp.children[word];
+   tmp = tmp.children[word[i]];
   }
   return tmp.end;
  }

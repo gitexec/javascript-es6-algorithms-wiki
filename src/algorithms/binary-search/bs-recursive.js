@@ -16,7 +16,7 @@ function bsRecursive(array, target) {
 function bsRecursiveHelper(array, left, right, target) {
  // base case
  if(left > right) {
-  return -1;
+  return;
  }
 
  let middle = Math.floor((left + right) / 2);
@@ -39,3 +39,5 @@ function isSorted(array) {
  }
  return true;
 }
+
+module.exports = bsRecursive;

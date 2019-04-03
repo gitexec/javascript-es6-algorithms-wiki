@@ -1,4 +1,4 @@
-function bsRecursive(array, target) {
+function bsIteration(array, target) {
  // TODO check if empty array or target
  // TODO check if sorted and sort
   
@@ -18,3 +18,5 @@ function bsRecursive(array, target) {
  }
  return - 1;
 }
+
+module.exports = bsIteration;
