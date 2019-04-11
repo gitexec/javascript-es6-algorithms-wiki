@@ -43,23 +43,28 @@ class BST {
    //3 cases
    if (this.left && !this.right) {
     this.data = this.left.data;
+    this.left = data;
     return this;   
    } 
    else if (this.right && !this.left) {
     this.data = this.right.data;
+    this.right = null;
     return this;
    }
    else { //both
     let max = this.left.max();
     this.data = max.data;
+    max = null;
     return this; 
    }
   }
   else if ( data < this.data ) {
     return this.left.remove(data);
   }
-  else {
+  else if ( data > this.data ) {
    return this.right.remove(data);
+  } else {
+    return null;
   }
  }
 
