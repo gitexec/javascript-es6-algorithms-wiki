@@ -9,7 +9,7 @@ class Tries {
   let i;
   for(i = 0; i < w.length; i++){ 
    if(!tmp.children[w[i]]) {
-     tmp[w[i]] = new TrieNode(w[i], tmp);
+     tmp.children[w[i]] = new TrieNode(w[i], tmp);
    }
    tmp = tmp.children[w[i]];
    if (i === w.length) tmp.end = true;
