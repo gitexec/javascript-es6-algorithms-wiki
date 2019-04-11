@@ -35,7 +35,7 @@ class Tries {
   for(let i = 0; i < prefix.length; i++){
    if(!tmp.children[prefix[i]]) return output;
   }
-  this.allWords(node, output);
+  this.allWords(tmp, output);
 
   return output;
 
